@@ -1,0 +1,193 @@
+
+          -------------------------------------------------------
+          Amber 14 SANDER                              2014
+          -------------------------------------------------------
+
+| Run on 11/29/2014 at 01:17:40
+
+|   Executable path: sander
+| Working directory: /home/ieguinoa/ambermache/noperiodic
+|          Hostname: Unknown
+  [-O]verwriting output
+
+File Assignments:
+|  MDIN: Input_Amber/input.mdin                                                
+| MDOUT: salidaPrueba2                                                         
+|INPCRD: nuevitas.rst7                                                         
+|  PARM: dosa1.prmtop                                                          
+|RESTRT: restrt                                                                
+|  REFC: refc                                                                  
+| MDVEL: mdvel                                                                 
+| MDFRC: mdfrc                                                                 
+|  MDEN: mden                                                                  
+| MDCRD: mdcrd                                                                 
+|MDINFO: mdinfo                                                                
+|  MTMD: mtmd                                                                  
+|INPDIP: inpdip                                                                
+|RSTDIP: rstdip                                                                
+|INPTRA: inptraj                                                               
+
+ 
+ Here is the input file:
+ 
+n MD 200ps                                                                     
+ &cntrl                                                                        
+  imin=0,irest=1,ntx=5,igb=0,                                                  
+  nstlim=10001,dt=0.001,                                                       
+  ntb=0, rgbmax=999,                                                           
+  ntwx=0, ntwr=1000,ntpr=1000,                                                 
+  ntt=0, tautp=1.0,                                                            
+  cut=9,                                                                       
+  nscm=0,                                                                      
+ /                                                                             
+
+--------------------------------------------------------------------------------
+   1.  RESOURCE   USE: 
+--------------------------------------------------------------------------------
+
+| Flags:                                                                        
+|    NONPERIODIC   ntb=0 and igb=0: Setting up nonperiodic simulation
+|  *** cutoff > system size, list only builds once
+|Largest sphere to fit in unit cell has radius =    30.013
+| New format PARM file being parsed.
+| Version =    1.000 Date = 10/21/14 Time = 21:23:50
+ NATOM  =       2 NTYPES =       1 NBONH =       0 MBONA  =       0
+ NTHETH =       0 MTHETA =       0 NPHIH =       0 MPHIA  =       0
+ NHPARM =       0 NPARM  =       0 NNB   =       2 NRES   =       2
+ NBONA  =       0 NTHETA =       0 NPHIA =       0 NUMBND =       0
+ NUMANG =       0 NPTRA  =       0 NATYP =       1 NPHB   =       0
+ IFBOX  =       0 NMXRS  =       1 IFCAP =       0 NEXTRA =       0
+ NCOPY  =       0
+
+
+|     Memory Use     Allocated
+|     Real                1987
+|     Hollerith             10
+|     Integer            20040
+|     Max Pairs              1
+|     nblistReal            24
+|     nblist Int        414287
+|       Total             1712 kbytes
+
+| Note: 1-4 EEL scale factors are being read from the topology file.
+
+| Note: 1-4 VDW scale factors are being read from the topology file.
+| Duplicated    0 dihedrals
+| Duplicated    0 dihedrals
+
+--------------------------------------------------------------------------------
+   2.  CONTROL  DATA  FOR  THE  RUN
+--------------------------------------------------------------------------------
+
+default_name                                                                    
+
+General flags:
+     imin    =       0, nmropt  =       0
+
+Nature and format of input:
+     ntx     =       5, irest   =       1, ntrx    =       1
+
+Nature and format of output:
+     ntxo    =       1, ntpr    =    1000, ntrx    =       1, ntwr    =    1000
+     iwrap   =       0, ntwx    =       0, ntwv    =       0, ntwe    =       0
+     ioutfm  =       0, ntwprt  =       0, idecomp =       0, rbornstat=      0
+
+Potential function:
+     ntf     =       1, ntb     =       0, igb     =       0, nsnb    =      25
+     ipol    =       0, gbsa    =       0, iesp    =       0
+     dielc   =   1.00000, cut     =   9.00000, intdiel =   1.00000
+
+Frozen or restrained atoms:
+     ibelly  =       0, ntr     =       0
+
+Molecular dynamics:
+     nstlim  =     10001, nscm    =         0, nrespa  =         1
+     t       =   0.00000, dt      =   0.00100, vlimit  =  20.00000
+|  INFO: Old style inpcrd file read
+
+
+--------------------------------------------------------------------------------
+   3.  ATOMIC COORDINATES AND VELOCITIES
+--------------------------------------------------------------------------------
+
+me                                                                              
+ begin time read from input coords =     0.101 ps
+
+ Number of triangulated 3-point waters found:        0
+
+     Sum of charges from parm topology file =   0.00000000
+     Forcing neutrality...
+
+--------------------------------------------------------------------------------
+   4.  RESULTS
+--------------------------------------------------------------------------------
+
+|  # of SOLUTE  degrees of freedom (RNDFP):       6.
+|  # of SOLVENT degrees of freedom (RNDFS):       0.
+|  NDFMIN =       6.     NUM_NOSHAKE =      0     CORRECTED RNDFP =       6.
+|  TOTAL # of degrees of freedom (RNDF) =       6.
+ ---------------------------------------------------
+
+     eedmeth=4: Setting switch to one everywhere
+
+ ---------------------------------------------------
+| Local SIZE OF NONBOND LIST =          1
+| TOTAL SIZE OF NONBOND LIST =          1
+
+ NSTEP =     1000   TIME(PS) =       1.101  TEMP(K) =    99.13  PRESS =     0.0
+ Etot   =         0.5910  EKtot   =         0.5910  EPtot      =         0.0000
+ BOND   =         0.0000  ANGLE   =         0.0000  DIHED      =         0.0000
+ 1-4 NB =         0.0000  1-4 EEL =         0.0000  VDWAALS    =         0.0000
+ EELEC  =         0.0000  EHBOND  =         0.0000  RESTRAINT  =         0.0000
+ ------------------------------------------------------------------------------
+
+
+ NSTEP =     2000   TIME(PS) =       2.101  TEMP(K) =    99.13  PRESS =     0.0
+ Etot   =         0.5910  EKtot   =         0.5910  EPtot      =         0.0000
+ BOND   =         0.0000  ANGLE   =         0.0000  DIHED      =         0.0000
+ 1-4 NB =         0.0000  1-4 EEL =         0.0000  VDWAALS    =         0.0000
+ EELEC  =         0.0000  EHBOND  =         0.0000  RESTRAINT  =         0.0000
+ ------------------------------------------------------------------------------
+
+
+ NSTEP =     3000   TIME(PS) =       3.101  TEMP(K) =    99.13  PRESS =     0.0
+ Etot   =         0.5910  EKtot   =         0.5910  EPtot      =         0.0000
+ BOND   =         0.0000  ANGLE   =         0.0000  DIHED      =         0.0000
+ 1-4 NB =         0.0000  1-4 EEL =         0.0000  VDWAALS    =         0.0000
+ EELEC  =         0.0000  EHBOND  =         0.0000  RESTRAINT  =         0.0000
+ ------------------------------------------------------------------------------
+
+
+ NSTEP =     4000   TIME(PS) =       4.101  TEMP(K) =    99.13  PRESS =     0.0
+ Etot   =         0.5910  EKtot   =         0.5910  EPtot      =         0.0000
+ BOND   =         0.0000  ANGLE   =         0.0000  DIHED      =         0.0000
+ 1-4 NB =         0.0000  1-4 EEL =         0.0000  VDWAALS    =         0.0000
+ EELEC  =         0.0000  EHBOND  =         0.0000  RESTRAINT  =         0.0000
+ ------------------------------------------------------------------------------
+
+
+ NSTEP =     5000   TIME(PS) =       5.101  TEMP(K) =    99.13  PRESS =     0.0
+ Etot   =         0.5910  EKtot   =         0.5910  EPtot      =         0.0000
+ BOND   =         0.0000  ANGLE   =         0.0000  DIHED      =         0.0000
+ 1-4 NB =         0.0000  1-4 EEL =         0.0000  VDWAALS    =         0.0000
+ EELEC  =         0.0000  EHBOND  =         0.0000  RESTRAINT  =         0.0000
+ ------------------------------------------------------------------------------
+
+
+ NSTEP =     6000   TIME(PS) =       6.101  TEMP(K) =    99.13  PRESS =     0.0
+ Etot   =         0.5910  EKtot   =         0.5910  EPtot      =         0.0000
+ BOND   =         0.0000  ANGLE   =         0.0000  DIHED      =         0.0000
+ 1-4 NB =         0.0000  1-4 EEL =         0.0000  VDWAALS    =         0.0000
+ EELEC  =         0.0000  EHBOND  =         0.0000  RESTRAINT  =         0.0000
+ ------------------------------------------------------------------------------
+
+ Frac coord min, max:   5.551070000815794E-003   1.00005972616859     
+ The system has extended beyond 
+     the extent of the virtual box.
+ Restarting sander will recalculate
+    a new virtual box with 30 Angstroms
+    extra on each side, if there is a
+    restart file for this configuration.
+ SANDER BOMB in subroutine Routine: map_coords (ew_force.f)
+ Atom out of bounds. If a restart has been written,
+ restarting should resolve the error
