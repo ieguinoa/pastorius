@@ -29,56 +29,51 @@ CUDART		:= -lcudart
 # Compiler flags
 
 # GCC   ?= g++
-NVCC  ?= $(CUDA_PATH)/bin/nvcc $(GCC)
+#NVCC  ?= $(CUDA_PATH)/bin/nvcc $(GCC)
 
 ################################################################################
 
 # Dependences
 
-CFILES ?= main.cu
+#CFILES ?= main.cu
 
 ################################################################################
 
-# Target rules
-all: build
 
-build: main
+#CC := g++ # This is the main compiler
 
-main.o: $(CFILES)
+SRCDIR := src
+BUILDDIR := build
+TARGET := bin/pastorius
+ 
+#SRCEXT := cu
+#SOURCES := $(shell find $(SRCDIR) -type f -name *.$(SRCEXT))
+#OBJECTS := $(patsubst $(SRCDIR)/%,$(BUILDDIR)/%,$(SOURCES:.$(SRCEXT)=.o))
+#CFLAGS := -g # -Wall
+#LIB := -pthread -lmongoclient -L lib -lboost_thread-mt -lboost_filesystem-mt -lboost_system-mt
+#INC := -I include
+
+SOURCES := $(SRCDIR)/main.cu
+OBJECTS := $(BUILDDIR)/main.o
+
+
+$(TARGET): $(OBJECTS)
+	@echo " Linking..."
+	@echo " $(NVCC) $^ -o $(TARGET) $(LIB)"; $(CC) $^ -o $(TARGET) $(LIB)
+  	
+$(BUILDDIR)/%.o: $(SRCDIR)/%.$(SRCEXT)
+	@mkdir -p $(BUILDDIR) 
+	#@echo " $(CC) $(CFLAGS) $(INC) -c -o $@ $<"; $(CC) $(CFLAGS) $(INC) -c -o $@ $<
 	$(NVCC) $(GENCODE_SM20) $(ALL_LDFLAGS) -DTIME $(CUDART) -o $@ -c $<
 
-main: main.o
-	$(NVCC) $(GENCODE_SM20) $(ALL_LDFLAGS)  -o amberMache $+
-
-# nvcc -gencode=arch=compute_20,code=sm_20 -m64 main.cu -lcudart
-
-run: build
-	./amberMache
-
 clean:
-	rm -f amberMache main.o *~
+	@echo " Cleaning..."; 
+	@echo " $(RM) -r $(BUILDDIR) $(TARGET)"; $(RM) -r $(BUILDDIR) $(TARGET)
 
-clobber: clean
+# Tests
+tester:
+	$(CC) $(CFLAGS) test/tester.cpp $(INC) $(LIB) -o bin/tester
 
-# /usr/lib/nvidia-cuda-toolkit/bin/nvcc -ccbin g++ -I../inc  -m64    -gencode arch=compute_10,code=sm_10 -gencode arch=compute_20,code=sm_20 -gencode arch=compute_30,code=sm_30 -gencode arch=compute_35,code=\"sm_35,compute_35\" -o deviceQuery.o -c deviceQuery.cpp
-# /usr/lib/nvidia-cuda-toolkit/bin/nvcc -ccbin g++   -m64        -o deviceQuery deviceQuery.o 
-
-# # Target rules
-# all: build
-# 
-# build: deviceQuery
-# 
-# deviceQuery.o: deviceQuery.cpp
-# 	$(NVCC) $(INCLUDES) $(ALL_CCFLAGS) $(GENCODE_FLAGS) -o $@ -c $<
-# 
-# deviceQuery: deviceQuery.o
-# 	$(NVCC) $(ALL_LDFLAGS) -o $@ $+
-# 
-# 
-# run: build
-# 	./deviceQuery
-# 
-# clean:
-# 	rm -f deviceQuery deviceQuery.o
-# 
-# clobber: clean
+# Spikes
+ticket:
+	$(CC) $(CFLAGS) spikes/ticket.cpp $(INC) $(LIB) -o bin/ticket
