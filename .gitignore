@@ -3,6 +3,10 @@ Compiled Object files
 *.lo
 *.o
 *.obj
+build/
+
+#binaries 
+bin/
 
 # Precompiled Headers
 *.gch
@@ -26,3 +30,7 @@ Compiled Object files
 *.exe
 *.out
 *.app
+
+#output
+Output_Sander/
+
