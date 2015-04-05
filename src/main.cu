@@ -82,7 +82,7 @@ char* particlesFileName = "../Input/Pastorius/particles.in";
 char* debugOutputFilename = "../Output/Pastorius/debug.out";
 char* outputFilename = "../Output/Pastorius/results.out";
 char* crdFilename = "../Output/Pastorius/mdcrd";
-char* timeFilename = "../OutputPastorius/times.out";
+char* timeFilename = "../Output/Pastorius/times.out";
 
 using namespace std;
 // streamsize ss = cout.precision();
