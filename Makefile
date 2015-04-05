@@ -44,7 +44,8 @@ CUDART		:= -lcudart
 
 SRCDIR := src
 BUILDDIR := build
-TARGET := bin/pastorius
+BINDIR := bin
+TARGET := $(BINDIR)/pastorius
  
 #SRCEXT := cu
 #SOURCES := $(shell find $(SRCDIR) -type f -name *.$(SRCEXT))
@@ -63,6 +64,7 @@ $(TARGET): $(OBJECTS)
   	
 $(BUILDDIR)/%.o: $(SRCDIR)/%.$(SRCEXT)
 	@mkdir -p $(BUILDDIR) 
+	@mkdir -p $(BINDIR)
 	#@echo " $(CC) $(CFLAGS) $(INC) -c -o $@ $<"; $(CC) $(CFLAGS) $(INC) -c -o $@ $<
 	$(NVCC) $(GENCODE_SM20) $(ALL_LDFLAGS) -DTIME $(CUDART) -o $@ -c $<
 

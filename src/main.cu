@@ -77,12 +77,12 @@
 					// Determinamos un cubo de volumen = (2*BOX_MAX) ^3
 
 /** Filenames **/
-char* lennardTableFileName = "Input_Mache/TablaCoeficientesLennard";
-char* particlesFileName = "Input_Mache/particles.in";
-char* debugOutputFilename = "Output_Mache/debug.out";
-char* outputFilename = "Output_Mache/results.out";
-char* crdFilename = "Output_Mache/mdcrd";
-char* timeFilename = "Output_Mache/times.out";
+char* lennardTableFileName = "../Input/Pastorius/LennardCoeffs";
+char* particlesFileName = "../Input/Pastorius/particles.in";
+char* debugOutputFilename = "../Output/Pastorius/debug.out";
+char* outputFilename = "../Output/Pastorius/results.out";
+char* crdFilename = "../Output/Pastorius/mdcrd";
+char* timeFilename = "../OutputPastorius/times.out";
 
 using namespace std;
 // streamsize ss = cout.precision();

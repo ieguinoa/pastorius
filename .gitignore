@@ -31,6 +31,11 @@ bin/
 *.out
 *.app
 
+#input files
+Input/Pastorius/
+Input/Amber/
+
 #output
-Output_Sander/
+Output/
+
 
