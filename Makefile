@@ -54,8 +54,8 @@ TARGET := $(BINDIR)/pastorius
 #LIB := -pthread -lmongoclient -L lib -lboost_thread-mt -lboost_filesystem-mt -lboost_system-mt
 #INC := -I include
 
-SOURCES := $(SRCDIR)/main.cu
-OBJECTS := $(BUILDDIR)/main.o
+SOURCES := $(SRCDIR)/md.cu $(SRCDIR)/derivativesKernels.cu $(SRCDIR)/mdKernels.cu $(SRCDIR)/functionsCpu.c
+OBJECTS := $(BUILDDIR)/md.o
 
 
 $(TARGET): $(OBJECTS)
@@ -73,9 +73,9 @@ clean:
 	@echo " $(RM) -r $(BUILDDIR) $(TARGET)"; $(RM) -r $(BUILDDIR) $(TARGET)
 
 # Tests
-tester:
-	$(CC) $(CFLAGS) test/tester.cpp $(INC) $(LIB) -o bin/tester
+#tester:
+#	$(CC) $(CFLAGS) test/tester.cpp $(INC) $(LIB) -o bin/tester
 
 # Spikes
-ticket:
-	$(CC) $(CFLAGS) spikes/ticket.cpp $(INC) $(LIB) -o bin/ticket
+#ticket:
+#	$(CC) $(CFLAGS) spikes/ticket.cpp $(INC) $(LIB) -o bin/ticket
