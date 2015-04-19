@@ -1040,40 +1040,37 @@ cudaError err;
 	    
 	if(amberResults){
 	    out << "/* ************************************************************************************************ */" << endl;
-	    out << "/* ************************************* STARTING ITERATION " << step << " ************************************ */" << endl;
+	    out << "/* ************************************* STARTING ITERATION " << step << " ************************ */" << endl;
 	    out << "/* ************************************************************************************************ */" << endl;
 	}
 	
 	    dimBlock.x = 1024;
 	    dimBlock.y = 1;
 	    
-	  /* ************************************************ */
-	  /* Calculamos Matriz de Distancias entre partículas */
-	  /* ************************************************ */
-	    /**Variables y memoria*/
+	  /* *************************************************** */
+	  /* 		CALCULATE DISTANCES BETWEEN PARTICLES	 */
+	  /* *************************************************** */
+	    
+// ****	GRID DIMENSIONS ****	  
 	    width = cant_particles;
 	    height = cant_particles;
 	    dimGrid.x = ceil((double)width / (double)dimBlock.x);
 	    dimGrid.y = ceil((double)height / (double)dimBlock.y);
 	    
 	    
- 	    if(!periodicity){
-		distances_kernel<<<dimGrid, dimBlock>>>(d_distance_r, d_distance_x, d_distance_y, d_distance_z,
-							d_position_x, d_position_y, d_position_z, width, height);
+ if(!periodicity){
+    distances_kernel<<<dimGrid, dimBlock>>>(d_distance_r, d_distance_x, d_distance_y, d_distance_z, d_position_x, d_position_y, d_position_z, width, height);
  	      
-	    } else {
-	    /**Rellenamos datos**/
- 		close_distances_kernel<<<dimGrid, dimBlock>>>(d_distance_x, d_distance_y, d_distance_z, d_distance_r,
-							      d_position_x, d_position_y, d_position_z, 
-							      h_box_x, h_box_y, h_box_z, width, height);
+  } else {   
+    close_distances_kernel<<<dimGrid, dimBlock>>>(d_distance_x, d_distance_y, d_distance_z, d_distance_r, d_position_x, d_position_y, d_position_z, h_box_x, h_box_y, h_box_z, width, height);
 	      
  	    }
 	    
 	
 	
-	//TRAIGO AL HOST LAS DISTANCIAS PORQUE LAS VOY A NECESITAR PARA HACER EL CALCULO DE dEr  EN cpu
+// 	DOWNLOAD DISTANCES MATRIX 
 	if (cpu)
-        cudaMemcpy(h_distance_r, d_distance_r, s_size, cudaMemcpyDeviceToHost);
+	  cudaMemcpy(h_distance_r, d_distance_r, s_size, cudaMemcpyDeviceToHost);
 	
 	
 	

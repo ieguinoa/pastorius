@@ -84,9 +84,9 @@ __global__ void derivatives_lennard_Kernel(float* dLJ_POT, double* EPS, double* 
 
 
 
-/*		****************************************
- *		********   CLOSEST IMAGE  **************
- *		****************************************
+/*		**************************************************************************
+ *		********   DISTANCE BETWEEN CLOSEST IMAGE  OF ANY PARTICLE **************
+ *		*************************************************************************
  */
 
 //  THIS KERNEL CALCULATES THE CLOSEST IMAGE BETWEEN TWO PARTICLES IN A SIMULATION USING PERIODIC BOUNDARIES 
@@ -130,6 +130,7 @@ __global__ void close_distances_kernel(double* X, double* Y, double* Z, double* 
 
 /*		***************************************************
  *		********   DISTANCE BETWEEN PARTICLES *************
+ *		*********---  NON Periodic  --------***************   
  *		**************************************************
  */
 
